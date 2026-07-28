@@ -4,20 +4,12 @@
 
 ## 简体中文
 
-StickTweak 是一个面向 Infinity Engine 增强版游戏的 WeiDU 调整合集，包含武器风格、法术、物品、生物及其他游戏内容调整。
+StickTweak 是一个面向 BG(2)EE 的 WeiDU 调整合集，包含武器风格、法术、物品、生物及其他游戏内容调整。
 
 ### 要求
 
 - EEex
 - StickLuaFunctions `v0.9.x-Alpha`
-
-### 收录版本
-
-本仓库从 `v2.4.0` 开始维护：
-
-- `StickTweak_v2.4.0`
-
-更早的历史版本不收录在本仓库中。
 
 ### 最新版本：v2.4.0
 
@@ -41,20 +33,12 @@ StickTweak 是一个面向 Infinity Engine 增强版游戏的 WeiDU 调整合集
 
 ## English
 
-StickTweak is a WeiDU tweak collection for Infinity Engine Enhanced Edition games. It includes weapon-style, spell, item, creature, and other gameplay tweaks.
+StickTweak is a WeiDU tweak collection for BG(2)EE. It includes weapon-style, spell, item, creature, and other gameplay tweaks.
 
 ### Requirements
 
 - EEex
 - StickLuaFunctions `v0.9.x-Alpha`
-
-### Included Versions
-
-This repository tracks releases starting with `v2.4.0`:
-
-- `StickTweak_v2.4.0`
-
-Earlier historical versions are not included in this repository.
 
 ### Latest Release: v2.4.0
 
