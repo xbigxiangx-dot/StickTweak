@@ -1,0 +1,74 @@
+LOAD_TRA ~%MOD_FOLDER%\TRA\%LANGUAGE%\WeaponStyleRebalance.tra~
+
+// 1
+// 更换武器风格加值2da表
+COPY_EXISTING ~STYLBONU.2da~ ~Override~
+// 修改文本
+STRING_SET 34174 @10001
+STRING_SET 34171 @10002
+STRING_SET 34176 @10004
+
+// LUA
+ACTION_IF !FILE_EXISTS_IN_GAME ~ST_Tweak.lua~ BEGIN	// 检测同mod其它组件是否已安装
+	COPY ~%MOD_FOLDER%\LUA\ST_Tweak.lua~ ~Override~
+	COPY_EXISTING ~M_Stick.lua~ ~Override~
+		APPEND_FILE ~%MOD_FOLDER%\LUA\ToAppend.lua~
+END
+COPY_EXISTING ~ST_Tweak.lua~ ~Override~
+	APPEND_FILE ~%MOD_FOLDER%\LUA\WeaponStyleRebalance.lua~
+	
+// 指定风格
+COPY ~%MOD_FOLDER%\SPL\STSTYLE.spl~ ~Override~
+	SAY NAME1 @11000
+	SAY UNIDENTIFIED_DESC @11001
+// 顺势斩
+COPY ~%MOD_FOLDER%\EFF\STPRECLV.eff~ ~Override~
+
+COPY ~%MOD_FOLDER%\PRO\STCLEAV.pro~ ~Override~
+ADD_PROJECTILE ~Override\STCLEAV.pro~
+COPY ~%MOD_FOLDER%\SPL\STCLEAV.spl~ ~Override~
+	READ_LONG  0x64 ExHead_off
+	READ_SHORT 0x68 ExHead_num
+		FOR (i=0;i<ExHead_num;++i) BEGIN
+			WRITE_SHORT 0x26+ExHead_off+40*i ~STCLEAV~
+		END
+COPY ~%MOD_FOLDER%\SPL\STCLEAVE.spl~ ~Override~
+	SAY NAME1 @11100
+
+
+
+/*
+COPY_EXISTING ~STYLBONU.2da~ ~Override~
+	patch_flag = 1
+	COUNT_2DA_COLS cols
+	READ_2DA_ENTRIES_NOW rows cols
+	FOR (i = 1; i < rows; ++i) BEGIN
+		READ_2DA_ENTRY_FORMER rows i 0 style_name
+		PATCH_IF (~%style_name%~ STRING_EQUAL_CASE ~TWOWEAPON-4~) THEN BEGIN
+			patch_flag = 0
+		END
+	END
+	PATCH_IF patch_flag = 1 THEN BEGIN
+		INSERT_2DA_ROW rows cols ~TWOWEAPON-4 0 0 0 0 0 0 0 0~
+	END
+	PRETTY_PRINT_2DA
+BUT_ONLY
+*/
+
+/*
+                 DAMAGE_RIGHT     DAMAGE_LEFT      THAC0_RIGHT      THAC0_LEFT       AC_BASE          AC_MISSILE       SPEED            CRITICALROLL
+TWOHANDED-1      1                0                0                0                0                0                -2               1
+SINGLEWEAPON-1   0                0                0                0                -1               0                0                1
+SWORDANDSHIELD-1 0                0                0                0                0                -2               0                0
+TWOWEAPON-1      0                0                2                6                0                0                0                0
+TWOHANDED-2      1                0                0                0                0                0                -4               1
+SINGLEWEAPON-2   0                0                0                0                -2               0                0                1
+SWORDANDSHIELD-2 0                0                0                0                0                -4               0                0
+TWOWEAPON-2      0                0                0                4                0                0                0                0
+TWOWEAPON-3      0                0                0                2                0                0                0                0
+
+TWOHANDED-2      2                0                0                0                -1               0                -4               1
+SINGLEWEAPON-2   0                0                0                0                -2               0                -2               1
+TWOHANDED-3      3                0                0                0                -2               0                -4               1
+SINGLEWEAPON-3   1                0                0                0                -2               0                -2               1
+*/

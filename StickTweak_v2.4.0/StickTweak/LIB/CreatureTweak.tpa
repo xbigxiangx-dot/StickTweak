@@ -1,0 +1,39 @@
+// 巨魔（火巨魔以外）残血立即倒地
+ACTION_IF FILE_EXISTS_IN_GAME ~TROLLREG.itm~ BEGIN
+	COPY_EXISTING ~TROLLREG.itm~ ~Override~
+		LPF ADD_ITEM_EQEFFECT
+			INT_VAR opcode = 232 target = 1 parameter1 = 0 parameter2 = 0 timing = 2
+			STR_VAR resource = ~TROLLR#~
+		END
+	COPY ~%MOD_FOLDER%\SPL\TROLLR#.spl~ ~Override~
+END
+
+// 托盖尔残血立即倒地
+ACTION_IF FILE_EXISTS_IN_GAME ~CDTORGAL.itm~ BEGIN
+	COPY_EXISTING ~CDTORGAL.itm~ ~Override~
+		LPF ADD_ITEM_EQEFFECT
+			INT_VAR opcode = 232 target = 1 parameter1 = 0 parameter2 = 0 timing = 2
+			STR_VAR resource = ~CDTORG#~
+		END
+	COPY ~%MOD_FOLDER%\SPL\CDTORG#.spl~ ~Override~
+END
+
+// 火巨魔残血立即倒地
+ACTION_IF FILE_EXISTS_IN_GAME ~CDHGTRL.itm~ BEGIN
+	COPY_EXISTING ~CDHGTRL.itm~ ~Override~
+		LPF ADD_ITEM_EQEFFECT
+			INT_VAR opcode = 232 target = 1 parameter1 = 0 parameter2 = 0 timing = 2
+			STR_VAR resource = ~CDHGTRL#~	
+		END
+	COPY ~%MOD_FOLDER%\SPL\CDHGTRL#.spl~ ~Override~
+END
+
+// SOD再生恐狼残血立即倒地
+ACTION_IF FILE_EXISTS_IN_GAME ~BDWOLFD1.itm~ BEGIN
+	COPY_EXISTING ~BDWOLFD1.itm~ ~Override~
+		LPF ADD_ITEM_EQEFFECT
+			INT_VAR opcode = 232 target = 1 parameter1 = 0 parameter2 = 0 timing = 2
+			STR_VAR resource = ~BDWOLFD#~
+		END
+	COPY ~%MOD_FOLDER%\SPL\BDWOLFD#.spl~ ~Override~
+END

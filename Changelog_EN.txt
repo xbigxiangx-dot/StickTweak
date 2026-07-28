@@ -1,0 +1,126 @@
+StickTweak Changelog
+====================
+
+v2.4.0
+------
+Requires StickLuaFunctions v0.9.x-Alpha.
+
+## Added:
+- Added support for choosing Simplified Chinese or English during installation.
+- The "Weapon Style Rebalance" component now grants additional bonuses when a light weapon is equipped in the off hand:
+	0 slots: attack penalties become -2/-4.
+	1 slot: attack penalties become 0/-2, and the Dexterity adjustment can be used to offset attack penalties.
+	2 slots: attack penalties become 0/0.
+
+## Changed:
+- In SOA, the container used to inherit BG1 equipment no longer contains its original junk items, making inherited equipment easier for players to identify.
+
+## Fixed:
+- Fixed an issue in the "Creature Tweaks" component where the "trolls fall down at low HP" tweak did not include Torgal.
+
+## Engineering and Compatibility:
+- Optimized the Two-Weapon Style code in the "Weapon Style Rebalance" component. This requires StickLuaFunctions v0.9.x-Alpha.
+
+
+v2.3.1
+------
+Requires StickLuaFunctions v0.7.x-Alpha.
+
+## Changed:
+- Renamed "Equipment Tweaks" to "Item Tweaks" and added handling for Potions of Freedom.
+
+## Engineering and Compatibility:
+- 2DA variables now use the _2DA suffix.
+
+
+v2.3.0
+------
+Requires StickLuaFunctions v0.7.x-Alpha.
+
+## Added:
+- The "Spell Tweaks" component now adds trigger handling for fire shield-type spells, allowing fire shields to function correctly even when the attacker misses.
+
+## Fixed:
+- Added a StickLuaFunctions dependency check to the "Spell Tweaks" component, preventing missing Lua support files when the component is installed by itself.
+- Cleaned up StickTweak's Lua loading flow: ST_Tweak.lua is registered on first install, and later components append their own Lua logic to that file.
+
+
+v2.2.1
+------
+## Fixed:
+- Fixed a text error in the "Cleave" feedback message.
+- Fixed an issue where Cleave could not trigger when using a one-handed weapon through Two-Handed Weapon Style.
+
+
+v2.2.0
+------
+Requires StickLuaFunctions v0.6.x-Alpha.
+
+## Changed:
+- "Weapon Style Rebalance" adjusted Two-Weapon Style: at 3 slots, the off-hand weapon can benefit from attacks-per-round bonuses granted by the relevant weapon proficiency.
+
+
+v2.1.3
+------
+## Changed:
+- Updated input parameter formats to match StickLuaFunctions v0.5.0-Alpha.
+
+
+v2.1.2
+------
+## Fixed:
+- Fixed a variable format error.
+
+
+v2.1.1
+------
+## Changed:
+- Adjusted parts of the code to match StickLuaFunctions v0.3.0-Alpha.
+
+
+v2.1.0
+------
+Requires StickLuaFunctions v0.2.x-Alpha.
+
+## Changed:
+- "Weapon Style Rebalance" allows characters with a one-handed weapon in the main hand and an empty off hand to choose between Single-Weapon Style and Two-Handed Weapon Style.
+- "Weapon Style Rebalance" now allows Single-Weapon Style to apply the Dexterity adjustment to damage bonuses.
+- "Weapon Style Rebalance" increases the weapon speed bonus provided by Two-Handed Weapon Style.
+
+
+v2.0.3
+------
+Requires StickLuaFunctions v0.1.x-Alpha.
+
+## Fixed:
+- Fixed an issue where "Weapon Style Rebalance" could cause the game to crash in some cases.
+
+
+v2.0.0
+------
+Requires EEex from this version onward.
+
+## Added:
+- "Weapon Style Rebalance" adds new Two-Handed Weapon Style enhancements:
+  - When using a two-handed weapon, or when using a one-handed weapon with an empty off hand, attack and damage rolls gain an additional 0.5x Strength adjustment bonus.
+  - Killing an enemy with a normal attack triggers "Cleave", making one physical attack against another nearby enemy.
+  - At 2 slots in Two-Handed Weapon Style, killing an enemy with "Cleave" can trigger another "Cleave".
+- "Weapon Style Rebalance" adds a new Single-Weapon Style enhancement:
+  - If the character has at least 1 slot in the relevant weapon proficiency, attack rolls can gain the Dexterity adjustment bonus.
+- "Weapon Style Rebalance" uses the higher bonus when the extra bonus conditions for both Two-Handed Weapon Style and Single-Weapon Style are met.
+
+
+v1
+--
+
+## Added:
+- "Creature Tweaks" makes trolls and other regenerating creatures fall down immediately at low HP.
+- "Equipment Tweaks" makes movement speed-increasing items compatible with Free Action effects.
+- "Equipment Tweaks" makes items with Free Action effects compatible with Haste effects.
+- "Spell Tweaks" makes True Sight take effect once per second.
+- "Spell Tweaks" makes Blade Barrier-type spells take effect once per second, with an additional trigger when a creature enters or leaves the spell area.
+- "Spell Tweaks" makes Defensive Harmony increase AC based on the number of nearby party members.
+- "Spell Tweaks" makes Free Action and Haste effects compatible.
+- "Spell Tweaks" allows self-targeted spells stored in sequencers to correctly affect the caster even when the sequencer is cast on another target.
+- "Miscellaneous Tweaks" supports item inheritance from SOD to SOA in EET: items are moved to the dungeon, and gold is moved to Mae'Var.
+- "Miscellaneous Tweaks" allows paladins to inherit de'Arnise Keep; any class can also inherit it if their THAC0 is below 11.

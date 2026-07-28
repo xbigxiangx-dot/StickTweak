@@ -1,0 +1,27 @@
+# Versions before v2.4.0
+/Old/
+/StickTweak_v2.0.0/
+/StickTweak_v2.0.1/
+/StickTweak_v2.0.2/
+/StickTweak_v2.0.3/
+/StickTweak_v2.1.0/
+/StickTweak_v2.1.1/
+/StickTweak_v2.1.2/
+/StickTweak_v2.1.3/
+/StickTweak_v2.2.0/
+/StickTweak_v2.2.1/
+/StickTweak_v2.3.0/
+/StickTweak_v2.3.1/
+
+# Release archives
+/*.zip
+/*.7z
+/*.rar
+
+# Local editor and operating-system files
+/.idea/
+/.vscode/
+*.bak
+*.tmp
+Thumbs.db
+Desktop.ini
