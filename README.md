@@ -22,7 +22,6 @@ StickTweak 是一个面向 Infinity Engine 增强版游戏的 WeiDU 调整合集
 ### 最新版本：v2.4.0
 
 - [中文完整说明](StickTweak_v2.4.0/StickTweak/说明.txt)
-- [English Readme](StickTweak_v2.4.0/StickTweak/Readme_EN.txt)
 - [下载 v2.4.0](https://github.com/xbigxiangx-dot/StickTweak/releases/tag/v2.4.0)
 
 ### 安装
@@ -32,11 +31,9 @@ StickTweak 是一个面向 Infinity Engine 增强版游戏的 WeiDU 调整合集
 3. 运行 `Setup-StickTweak.exe`。
 4. 按照 WeiDU 安装程序的提示选择语言和组件。
 
-### 文档与更新记录
+### 更新记录
 
-- [v2.4.0 中文完整说明](StickTweak_v2.4.0/StickTweak/说明.txt)
 - [中文更新记录](Changelog.txt)
-- [English Changelog](Changelog_EN.txt)
 
 ### 许可证
 
@@ -62,7 +59,6 @@ Earlier historical versions are not included in this repository.
 ### Latest Release: v2.4.0
 
 - [Full English readme](StickTweak_v2.4.0/StickTweak/Readme_EN.txt)
-- [中文完整说明](StickTweak_v2.4.0/StickTweak/说明.txt)
 - [Download v2.4.0](https://github.com/xbigxiangx-dot/StickTweak/releases/tag/v2.4.0)
 
 ### Installation
@@ -72,11 +68,9 @@ Earlier historical versions are not included in this repository.
 3. Run `Setup-StickTweak.exe`.
 4. Follow the WeiDU installer prompts to select a language and components.
 
-### Documentation and Changelog
+### Changelog
 
-- [Full v2.4.0 English readme](StickTweak_v2.4.0/StickTweak/Readme_EN.txt)
 - [English changelog](Changelog_EN.txt)
-- [Chinese changelog](Changelog.txt)
 
 ### License
 
