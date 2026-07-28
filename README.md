@@ -6,6 +6,8 @@
 
 StickTweak 是一个面向 BG(2)EE 的调整合集，包含武器风格、法术、物品、生物及其他游戏内容调整。
 
+> **兼容性说明：** 本项目不支持游戏版本 2.7。
+
 ### 要求
 
 - EEex
@@ -34,6 +36,8 @@ StickTweak 是一个面向 BG(2)EE 的调整合集，包含武器风格、法术
 ## English
 
 StickTweak is a tweak collection for BG(2)EE. It includes weapon-style, spell, item, creature, and other gameplay tweaks.
+
+> **Compatibility notice:** Game version 2.7 is not supported.
 
 ### Requirements
 
