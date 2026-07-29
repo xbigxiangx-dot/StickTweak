@@ -4,7 +4,7 @@ StickTweak 说明
 ## 基本信息
 
 - 版本：v2.4.1
-- 依赖：需要先安装 StickLuaFunctions v0.9.x-Alpha 系列版本；其他 Alpha 版本不保证兼容。
+- 依赖：需要先安装 StickLuaFunctions v0.8.x-Alpha 系列版本；其他 Alpha 版本不保证兼容。
 
 ## 主要内容
 
