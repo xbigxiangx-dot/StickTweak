@@ -1,0 +1,8 @@
+IF
+	Global("ST#GoldTransport","AR0301",0)
+THEN
+	RESPONSE #100
+		GiveObjectGoldGlobal("K#ImportGold","GLOBAL","MAEVAR") 
+		SetGlobal("K#ImportGold","GLOBAL",0)
+		SetGlobal("ST#GoldTransport","AR0301",1)
+END

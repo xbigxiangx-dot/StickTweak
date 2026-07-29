@@ -1,5 +1,14 @@
 StickTweak 更新日志
 ===================
+v2.4.1
+------
+需要 StickLuaFunctions v0.9.x-Alpha。
+
+##修复：
+- 修复了"武器风格平衡"双武器风格命中和APR不正确的问题。
+- 更新了"武器风格平衡"组件中双武器风格的说明文本。
+
+
 v2.4.0
 ------
 需要 StickLuaFunctions v0.9.x-Alpha。

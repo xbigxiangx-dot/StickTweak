@@ -1,0 +1,94 @@
+INCLUDE ~%MOD_FOLDER%\LIB\APPEND_SPLSTATE.tph~ 
+INCLUDE ~%MOD_FOLDER%\LIB\APPEND_SPLPROT.tph~ 
+
+LOAD_TRA ~%MOD_FOLDER%\TRA\%LANGUAGE%\Game.tra~
+
+// 增加移动速度的物品不受自由行动限制，自由行动物品不阻止加速
+COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~
+	READ_LONG  0x54 idf_desc
+	READ_LONG  0x6a eff_off
+	READ_SHORT 0x70 glb_eff_num
+	
+	patch_flag_1 = 0	// 判定符：物品拥有【126：增加移动速度】
+	patch_flag_2 = 0	// 判定符：物品拥有【163：自由行动】
+	FOR (i = 0 ; i < glb_eff_num ; ++i) BEGIN
+		READ_SHORT (eff_off + (i * 0x30)) opcode
+		PATCH_IF opcode = 126 BEGIN
+			patch_flag_1 = 1
+		END
+		PATCH_IF opcode = 163 BEGIN
+			patch_flag_2 = 1
+		END
+	END
+	PATCH_IF ~%SOURCE_RES%~ STRING_EQUAL_CASE ~POTN45~ BEGIN
+		patch_flag_2 = 1
+	END
+	
+	// 将物品的【126：增加移动速度】改为【176：增加移动速度2】
+	PATCH_IF (patch_flag_1 = 1) & (patch_flag_2 = 0) BEGIN
+		LPF ALTER_ITEM_EFFECT
+			INT_VAR check_globals = 1 match_opcode = 126 new_opcode = 176
+		END
+	END
+	// 删除自由行动物品的所有免疫加速效果
+	PATCH_IF patch_flag_2 = 1 BEGIN
+		LPF DELETE_EFFECT
+			INT_VAR match_opcode = 101 match_parameter2 = 16
+		END
+		LPF DELETE_EFFECT
+			INT_VAR match_opcode = 126 match_parameter1 = 100 match_parameter2 = 2
+		END
+		LPF DELETE_EFFECT
+			INT_VAR match_opcode = 169 match_parameter2 = 38
+		END
+		LPF DELETE_EFFECT
+			INT_VAR match_opcode = 206
+			STR_VAR match_resource = ~SPRA301~
+		END
+		LPF DELETE_EFFECT
+			INT_VAR match_opcode = 206
+			STR_VAR match_resource = ~SPIN572~
+		END
+		LPF DELETE_EFFECT
+			INT_VAR match_opcode = 206
+			STR_VAR match_resource = ~SPIN828~
+		END
+		LPF DELETE_EFFECT
+			INT_VAR match_opcode = 206
+			STR_VAR match_resource = ~SPCL522~
+		END
+		LPF DELETE_EFFECT
+			INT_VAR match_opcode = 206
+			STR_VAR match_resource = ~SPWI305~
+		END
+		LPF DELETE_EFFECT
+			INT_VAR match_opcode = 206
+			STR_VAR match_resource = ~SPWI613~
+		END
+		LPF DELETE_EFFECT
+			INT_VAR match_opcode = 240 match_parameter2 = 38
+		END
+		LPF DELETE_EFFECT
+			INT_VAR match_opcode = 240 match_parameter2 = 195
+		END
+		LPF DELETE_EFFECT
+			INT_VAR match_opcode = 267 match_parameter1 = 10954
+		END
+		LPF DELETE_EFFECT
+			INT_VAR match_opcode = 267 match_parameter1 = 14023
+		END
+		
+		PATCH_IF idf_desc > 0 BEGIN
+			READ_STRREF	0x54 idf_desc_str
+			SPRINT desc_str_0 @20020
+			SPRINT desc_str_1 @20021
+			INNER_PATCH_SAVE idf_desc_str ~%idf_desc_str%~ BEGIN
+				REPLACE_TEXTUALLY EVALUATE_REGEXP ~%desc_str_0%~ ~%desc_str_1%~
+			END
+			INNER_ACTION BEGIN
+				STRING_SET_EVALUATE idf_desc ~%idf_desc_str%~
+			END
+		END
+	END
+	BUT_ONLY
+	

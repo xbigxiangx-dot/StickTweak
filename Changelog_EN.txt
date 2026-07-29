@@ -1,6 +1,15 @@
 StickTweak Changelog
 ====================
 
+v2.4.1
+------
+Requires StickLuaFunctions v0.9.x-Alpha.
+
+## Fixed:
+- Fixed incorrect attack rolls and APR calculations for Two-Weapon Style in the "Weapon Style Rebalance" component.
+- Updated the Two-Weapon Style description in the "Weapon Style Rebalance" component.
+
+
 v2.4.0
 ------
 Requires StickLuaFunctions v0.9.x-Alpha.

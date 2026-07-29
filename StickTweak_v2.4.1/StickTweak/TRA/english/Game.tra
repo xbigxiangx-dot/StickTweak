@@ -1,0 +1,62 @@
+////////////////////////////////////////////////////////////////
+/*                          Item Tweaks                       */
+////////////////////////////////////////////////////////////////
+@20020 = ~Haste~
+@20021 = ~Hold~
+
+////////////////////////////////////////////////////////////////
+/*                          Spell Tweaks                      */
+////////////////////////////////////////////////////////////////
+@30011 = ~True Seeing (Divination)
+Level: 5
+Sphere: Divination
+Range: 0
+Duration: 1 turn
+Casting Time: 8
+Area of Effect: 70-ft. radius
+Saving Throw: None
+
+When True Seeing is cast, the area within a 70-ft. radius of the caster is affected. All enemy illusion/phantasm spells are dispelled immediately, and the effect is repeated once per second for the full duration of 1 turn. Spells affected include Reflected Image, Invisibility, Mirror Image, Non-Detection, Improved Invisibility, Shadow Door, Mislead, Project Image, and Simulacrum. The spell is centered on the caster, and magic resistance does not protect against its illusion-dispelling effect. True Seeing affects enemies only, so it will not dispel invisibility from party members.~
+
+@30012 = ~True Sight (Divination)
+Level: 6
+Range: 0
+Duration: 1 turn
+Casting Time: 8
+Area of Effect: 70-ft. radius
+Saving Throw: None
+
+When True Sight is cast, the area within a 70-ft. radius of the caster is affected. All enemy illusion/phantasm spells are dispelled immediately, and the effect is repeated once per second for the full duration of 1 turn. Spells affected include Reflected Image, Invisibility, Mirror Image, Non-Detection, Improved Invisibility, Shadow Door, Mislead, Project Image, and Simulacrum. The spell is centered on the caster, and magic resistance does not protect against its illusion-dispelling effect. True Sight affects enemies only, so it will not dispel invisibility from party members.~
+
+@30021 = ~Blade Barrier (Evocation)
+Level: 6
+Sphere: Guardian/Creation
+Range: 0
+Duration: 1 turn
+Casting Time: 9
+Area of Effect: Special
+Saving Throw: Special
+
+This spell creates a ring-shaped wall of whirling blades around the caster, cutting down enemies that try to close in. Any creature that attempts to pass through the blade wall takes 8d8 points of damage. Creatures remaining within the barrier take 1d8 damage each second 66% of the time, or 2d8 damage each second 33% of the time. Creatures already inside the area when the spell is cast may make a saving throw vs. spell; on a successful save, they avoid the blades and take no damage. The blades last for 10 rounds.~
+
+@30022 = ~Globe of Blades (Evocation)
+Level: Innate
+Sphere: Protection/Creation
+Range: 0
+Duration: 1 turn
+Casting Time: 9
+Area of Effect: Special
+Saving Throw: Special
+
+Through this divine spell, the priest creates a sphere of razor-sharp blades. The blades whirl and flash around the caster, forming a dangerous barrier. Any creature attempting to pass through the barrier takes 10d10 points of damage. Creatures remaining within the barrier take 1d10 damage each second 33% of the time, or 2d10 damage each second 66% of the time. Creatures in the area save vs. spell at a -2 penalty; on a successful save, they avoid the blades and take no damage. The blades last for 10 rounds.~
+
+@3003 = ~Defensive Harmony (Enchantment/Charm)
+Level: 4
+Sphere: Law
+Range: Caster
+Duration: 6 rounds
+Casting Time: 1
+Area of Effect: 10-ft. radius
+Saving Throw: None
+
+Defensive Harmony grants affected creatures magical coordination in attack and defense, allowing a group to move as a single unit and improving their defensive ability. The spell affects all allies within 10 ft. of the caster. Affected creatures may leave the area after the spell is cast and still retain the benefit. Each affected creature grants the other affected creatures a +1 bonus to Armor Class, up to a maximum of +5. The spell lasts for 6 rounds, or until successfully dispelled.~
