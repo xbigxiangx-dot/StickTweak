@@ -3,7 +3,7 @@ StickTweak Changelog
 
 v2.4.1
 ------
-Requires StickLuaFunctions v0.9.x-Alpha.
+Requires StickLuaFunctions v0.8.x-Alpha.
 
 ## Fixed:
 - Fixed incorrect attack rolls and APR calculations for Two-Weapon Style in the "Weapon Style Rebalance" component.
@@ -12,7 +12,7 @@ Requires StickLuaFunctions v0.9.x-Alpha.
 
 v2.4.0
 ------
-Requires StickLuaFunctions v0.9.x-Alpha.
+Requires StickLuaFunctions v0.8.x-Alpha.
 
 ## Added:
 - Added support for choosing Simplified Chinese or English during installation.
@@ -28,7 +28,7 @@ Requires StickLuaFunctions v0.9.x-Alpha.
 - Fixed an issue in the "Creature Tweaks" component where the "trolls fall down at low HP" tweak did not include Torgal.
 
 ## Engineering and Compatibility:
-- Optimized the Two-Weapon Style code in the "Weapon Style Rebalance" component. This requires StickLuaFunctions v0.9.x-Alpha.
+- Optimized the Two-Weapon Style code in the "Weapon Style Rebalance" component. This requires StickLuaFunctions v0.8.x-Alpha.
 
 
 v2.3.1
