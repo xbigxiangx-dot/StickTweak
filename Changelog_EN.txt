@@ -1,6 +1,14 @@
 StickTweak Changelog
 ====================
 
+v2.5.0
+------
+Requires StickLuaFunctions v0.9.x-Alpha.
+
+## Fixed:
+- Fixed the off-hand weapon proficiency APR bonus calculation in "Weapon Style Rebalance" by reading its value from WSPATCK.2DA.
+
+
 v2.4.1
 ------
 Requires StickLuaFunctions v0.8.x-Alpha.

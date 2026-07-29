@@ -1,5 +1,4 @@
 
-
 --[[
 +--------------+
 | 武器风格平衡 |
@@ -23,6 +22,43 @@ local strMod_2DA = EEex_Resource_Load2DA('STRMOD')
 local strModEx_2DA = EEex_Resource_Load2DA('STRMODEX')
 local dexMod_2DA = EEex_Resource_Load2DA('DEXMOD')
 local styleBonus_2DA = EEex_Resource_Load2DA('STYLBONU')
+local classWeaponBonus_2DA = EEex_Resource_Load2DA('CLSWPBON')
+local weapSpecAttacks_2DA = EEex_Resource_Load2DA('WSPATCK')
+local kitList_2DA = EEex_Resource_Load2DA('KITLIST')
+
+-- 建立映射表
+local ST_ClassIdToClassCode = {
+	[1]  = "MAGE",
+	[2]  = "FIGHTER",
+	[3]  = "CLERIC",
+	[4]  = "THIEF",
+	[5]  = "BARD",
+	[6]  = "PALADIN",
+	[7]  = "FIGHTER_MAGE",
+	[8]  = "FIGHTER_CLERIC",
+	[9]  = "FIGHTER_THIEF",
+	[10] = "FIGHTER_MAGE_THIEF",
+	[11] = "DRUID",
+	[12] = "RANGER",
+	[13] = "MAGE_THIEF",
+	[14] = "CLERIC_MAGE",
+	[15] = "CLERIC_THIEF",
+	[16] = "FIGHTER_DRUID",
+	[17] = "FIGHTER_MAGE_CLERIC",
+	[18] = "CLERIC_RANGER",
+	[19] = "SORCERER",
+	[20] = "MONK",
+	[21] = "SHAMAN",
+}
+
+local kitIdToKitCode = {}	-- 映射到 kitCode 的表
+for rowIndex = 1, kitList_2DA.m_nSizeY - 1 do
+	local kitCode = EEex_Resource_GetAt2DAPoint(kitList_2DA, 0, rowIndex)	
+	if kitId then
+		kitIdToKitCode[kitId] = kitCode
+	end
+end
+kitIdToKitCode[0x00004015] = "LATHANDER"	-- 手动修复 0x00004015 重名错误
 
 -- 顺势斩
 ST_AddMeleeAttackListener(function(sourceSprite, targetSprite, blocked)
@@ -54,7 +90,7 @@ end)
 function STCLEAVE(effect, targetSprite)
 	local sourceSprite = EEex_GameObject_Get(effect.m_sourceId)
 	
-	local weaponRes, _ = ST_GetCurrentWeapon(sourceSprite, true)
+	local weaponRes = ST_GetCurrentWeapon(sourceSprite, true)
 	local proficiency2H = ST_GetWeaponProficiency(sourceSprite, 111)
 	
 	if st_currentAttack.sourceTag ~= "STCLEAVE" or (proficiency2H > 1) then
@@ -71,6 +107,7 @@ EEex_Sprite_AddLoadedListener(function(sprite)	-- 加载sprite时为其初始化
 	local acBonusEffects = ST_FindEffects(sprite.m_timedEffectList, {m_effectId = 0, m_sourceRes = "STWSRMOD"}, true)
 	local speedBonusEffects = ST_FindEffects(sprite.m_timedEffectList, {m_effectId = 190, m_sourceRes = "STWSRMOD"}, true)
 	local criticalBonusEffects = ST_FindEffects(sprite.m_timedEffectList, {m_effectId = 301, m_sourceRes = "STWSRMOD"}, true)
+	local leftHandHitBonusEffects = ST_FindEffects(sprite.m_timedEffectList, {m_effectId = 305, m_sourceRes = "STWSRMOD"}, true)
 	
 	local aprBonusEffects = ST_FindEffects(sprite.m_timedEffectList, {m_effectId = 1, m_sourceRes = "STWSRMOD"}, true)
 	
@@ -124,7 +161,7 @@ EEex_Sprite_AddLoadedListener(function(sprite)	-- 加载sprite时为其初始化
 			["m_sourceRes"] = "STWSRMOD",
 			})
 	end
-	if #hitBonusEffects == 0 then
+	if #leftHandHitBonusEffects == 0 then
 		EEex_GameObject_ApplyEffect(sprite,{
 			["effectID"] = 305,	-- 副手命中修正
 			["effectList"] = 1,
@@ -141,6 +178,7 @@ EEex_Sprite_AddLoadedListener(function(sprite)	-- 加载sprite时为其初始化
 			["effectAmount"] = 0,
 			["dwFlags"] = 0,
 			["durationType"] = 9,
+			["m_special"] = 1,
 			["m_sourceRes"] = "STWSRMOD",
 			})
 	end	
@@ -168,7 +206,6 @@ local lightWeaponProficiencies = {
 	[115] = true, -- CLUB
 }
 
-local leftAPRBonus = {}
 EEex_Opcode_AddListsResolvedListener(function(sprite)
 	local rightWeaponRes, leftWeaponRes, naturalStyle = ST_GetCurrentWeapon(sprite, false)
 	local customStyle = EEex_Sprite_GetLocalInt(sprite, "ST_FightingStyle")
@@ -269,22 +306,20 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	if resolvedStyle == 4 then
 		local weaponProficiencyIndex = leftWeaponRes.pHeader.proficiencyType
 		if lightWeaponProficiencies[weaponProficiencyIndex] then
-			local prof = proficiency2W >= 2 and 2 or math.max(0, proficiency2W)
-			local dexModToHit2W = EEex_Resource_GetAt2DALabels(dexMod_2DA, 'MISSILE', tostring(dex))
-			
-			local baseHit = (prof == 2) and 0 or 2
-			local capHit  = (prof == 0) and 2 or 0
+			local prof = math.max(0, math.min(4, proficiency2W))
+			local dexModToHit2W = tonumber(EEex_Resource_GetAt2DALabels(dexMod_2DA, "MISSILE", tostring(dex))) or 0
+			local baseHit = prof >= 2 and 0 or 2
+			local capHit = prof == 0 and 2 or 0
 			local mainHandDynamic = math.min(capHit, dexModToHit2W)
-			
-			hitBonus = hitBonus + baseHit + mainHandDynamic
-			
-			local targetOffHandCap = 4 - (prof * 2)
+			local sharedHitBonus = baseHit + mainHandDynamic
+			hitBonus = hitBonus + sharedHitBonus
+			local targetOffHandCap = 4 - prof * 2
 			local totalOffHandDynamic = math.min(targetOffHandCap, dexModToHit2W)
-			
-			leftHandHitBonus = (4 - baseHit) + (totalOffHandDynamic - mainHandDynamic)
+			local targetOffHandHitBonus = math.min(4, 4 + totalOffHandDynamic)
+			leftHandHitBonus = targetOffHandHitBonus - sharedHitBonus
 		end
 	end
-
+	
 	-- 读取 STWSRMOD 提供的修正值effects
 	local hitBonusEffects = ST_FindEffects(sprite.m_timedEffectList, {m_effectId = 278, m_sourceRes = "STWSRMOD"}, true)
 	local damBonusEffects = ST_FindEffects(sprite.m_timedEffectList, {m_effectId = 73, m_sourceRes = "STWSRMOD"}, true)
@@ -332,23 +367,45 @@ EEex_Opcode_AddListsResolvedListener(function(sprite)
 	end
 	
 	-- 双武器风格提供额外副手攻击次数
+	local aprBonus = 0
 	if resolvedStyle == 4 and proficiency2W >= 3 then
-		local leftProf = ST_GetWeaponProficiency(sprite, leftWeaponRes.pHeader.proficiencyType)
-		local id = sprite.m_id
-		local aprBonus = 0
-		if leftProf >= 2 and leftProf < 5 then
-			aprBonus = 6	-- 半次攻击
-		elseif leftProf == 5 then
-			aprBonus = 1	-- 一次攻击
-		end
-		leftAPRBonus[id] = aprBonus
-		
-		local aprBonusEffects = ST_FindEffects(sprite.m_timedEffectList, {m_effectId = 1, m_sourceRes = "STWSRMOD"}, true)
-		if #aprBonusEffects ~= 0 then
-			local effect = aprBonusEffects[1]
-			if effect.m_effectAmount ~= aprBonus then
-				effect.m_effectAmount = aprBonus
+		local classId = sprite.m_typeAI.m_Class
+		local kitIds = ST_GetAllKitIds(sprite)
+		local codes = {ST_ClassIdToClassCode[classId]}
+
+		for i = 1, #kitIds do
+			local kitCode = kitIdToKitCode[kitIds[i]]
+			if kitCode then
+				table.insert(codes, kitCode)
 			end
+		end
+		
+		local getsProfAPR = false
+		for i = 1, #codes do
+			if EEex_Resource_GetAt2DALabels(classWeaponBonus_2DA, "GETS_PROF_APR", codes[i]) == '1' then
+				getsProfAPR = true
+				break
+			end
+		end
+		
+		if getsProfAPR then
+			local leftProf = ST_GetWeaponProficiency(sprite, leftWeaponRes.pHeader.proficiencyType)
+			local aprFrom2DA = tonumber(EEex_Resource_GetAt2DALabels(weapSpecAttacks_2DA, 'LEVEL1', tostring(leftProf)))
+			
+			if aprFrom2DA >= 0 then
+				aprBonus = aprFrom2DA
+			else
+				aprBonus = math.abs(aprFrom2DA) + 5
+			end
+		end
+	end
+	
+	local aprBonusEffects = ST_FindEffects(sprite.m_timedEffectList, {m_effectId = 1, m_sourceRes = "STWSRMOD"}, true)
+	if #aprBonusEffects ~= 0 then
+		local effect = aprBonusEffects[1]
+		if effect.m_effectAmount ~= aprBonus then
+			effect.m_effectAmount = aprBonus
+			effect.m_special = 1
 		end
 	end
 end)
@@ -374,15 +431,3 @@ function STSTYLE(effect, targetSprite)
 	local spellList = targetSprite.m_memorizedSpellsInnate:getReference(0)
 	ST_SetMemorizedSpellNum(targetSprite, "STSTYLE", 1, 0)
 end
-
-ST_AddAttackIndexListener(function(sourceSprite, targetSprite, attackIndex)
-	local proficiency2W = ST_GetWeaponProficiency(sourceSprite, 114)
-	local _, _, fightingStyle = ST_GetCurrentWeapon(sourceSprite, false)
-	
-	if fightingStyle == 4 and proficiency2W >= 3 and attackIndex == 2 then
-		local bonus = leftAPRBonus[id]
-		if bonus == 1 or (bonus == 6 and sourceSprite.m_nHalfSwingCounter % 2 == 0) then
-			sourceSprite.m_leftAttack = 1
-		end
-	end
-end)

@@ -13,10 +13,10 @@ StickTweak 是一个面向 BG(2)EE 的调整合集，包含武器风格、法术
 - EEex
 - StickLuaFunctions（通常要求最新版本）
 
-### 最新版本：v2.4.1
+### 最新版本：v2.5.0
 
-- [完整说明](StickTweak_v2.4.1/StickTweak/说明.txt)
-- [下载 v2.4.1](https://github.com/xbigxiangx-dot/StickTweak/releases/tag/v2.4.1)
+- [完整说明](StickTweak_v2.5.0/StickTweak/说明.txt)
+- [下载 v2.5.0](https://github.com/xbigxiangx-dot/StickTweak/releases/tag/v2.5.0)
 
 ### 安装
 
@@ -44,10 +44,10 @@ StickTweak is a tweak collection for BG(2)EE. It includes weapon-style, spell, i
 - EEex
 - StickLuaFunctions (the latest version is generally required)
 
-### Latest Release: v2.4.1
+### Latest Release: v2.5.0
 
-- [Full readme](StickTweak_v2.4.1/StickTweak/Readme_EN.txt)
-- [Download v2.4.1](https://github.com/xbigxiangx-dot/StickTweak/releases/tag/v2.4.1)
+- [Full readme](StickTweak_v2.5.0/StickTweak/Readme_EN.txt)
+- [Download v2.5.0](https://github.com/xbigxiangx-dot/StickTweak/releases/tag/v2.5.0)
 
 ### Installation
 
