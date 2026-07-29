@@ -1,5 +1,13 @@
 StickTweak 更新日志
 ===================
+v2.5.0
+------
+需要 StickLuaFunctions v0.9.x-Alpha。
+
+##修复：
+- 修正了“武器风格平衡”中副手武器熟练度攻击次数加成的计算，改为读取 WSPATCK.2DA。
+
+
 v2.4.1
 ------
 需要 StickLuaFunctions v0.8.x-Alpha。
