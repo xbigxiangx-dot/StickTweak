@@ -1,0 +1,29 @@
+@10001 = ~Single-Weapon Style: This fighting style is for characters who do not wish to use a shield but still want a reward for fighting with a one-handed weapon.
+
+Proficient (1 slot): The wielder gains a -1 bonus to Armor Class and a +1 bonus to critical hit rolls, scoring a critical hit on a roll of 19 or 20 instead of only on 20. When using a light weapon (dagger, short sword, scimitar, wakizashi, ninja-to, or club), the wielder's attack rolls use the better of Dexterity and Strength adjustments; if the wielder has at least 1 proficiency slot in the equipped weapon, damage rolls can receive the same benefit.
+
+Specialized (2 slots): The wielder gains an additional -1 bonus to Armor Class.~
+
+@10002 = ~Two-Handed Weapon Style: This fighting style allows a character using two-handed melee weapons to gain special weighted bonuses.
+
+Proficient (1 slot): When using a two-handed melee weapon, the wielder gains +1 damage, a -2 bonus to weapon speed, and a +1 bonus to critical hit rolls, scoring a critical hit on a roll of 19 or 20 instead of only on 20. Attack and damage rolls also gain an additional 0.5x Strength adjustment. When a normal attack kills an enemy, the wielder immediately performs a Cleave.
+
+Specialized (2 slots): When using a two-handed melee weapon, weapon speed gains an additional -2 bonus. If Cleave kills an enemy, it can trigger another Cleave.
+
+Cleave: Make one melee attack with the current weapon against a nearby enemy. This attack does not consume attacks per round.
+
+Note: Magical two-handed weapons are much more powerful than their one-handed counterparts, but this is balanced by the inability to use a second weapon or shield while wielding a two-handed weapon. Carsomyr and the Vorpal Sword are examples of this weapon type.~
+
+@10004 = ~Two-Weapon Style: This fighting style allows a character to wield two weapons at the same time while suffering reduced penalties. A character who has not learned Two-Weapon Style suffers a -4 penalty to attack rolls with the main hand and a -8 penalty with the off hand.
+
+Proficient (1 slot): The wielder's attack penalties are reduced to -2 with the main hand and -6 with the off hand.
+
+Specialized (2 slots): The wielder has no attack penalty with the main hand, and the off-hand attack penalty is reduced to -4.
+
+Master (3 slots): The wielder has no attack penalty with the main hand, and the off-hand attack penalty is reduced to -2. In addition, off-hand attacks benefit from the attacks-per-round bonus granted by weapon proficiency.~
+
+@11000 = ~Toggle Weapon Style~
+@11001 = ~Toggle Weapon Style
+When a character has only a one-handed weapon equipped in the main hand, this ability lets the character choose whether to use Single-Weapon Style or Two-Handed Weapon Style.~
+
+@11100 = ~Cleave~

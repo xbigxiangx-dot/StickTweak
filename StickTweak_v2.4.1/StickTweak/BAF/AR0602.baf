@@ -1,0 +1,9 @@
+IF
+	Global("TakeImportItems","AR0602",1)
+	Global("ST#ItemTransport","AR0602",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Chest1",DestroyAllEquipment())
+		MoveContainerContents("K#ImportContainer","Chest1")
+		SetGlobal("ST#ItemTransport","AR0602",1)
+END
