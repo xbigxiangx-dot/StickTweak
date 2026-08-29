@@ -1,6 +1,18 @@
 StickTweak Changelog
 ====================
 
+v2.6.0
+------
+Requires StickLuaFunctions v0.11.x-Alpha.
+
+## Changed:
+- Updated the attack context variable name to match StickLuaFunctions v0.11.x-Alpha.
+
+## Fixed:
+- Fixed a damage calculation error.
+- Fixed an issue where Single-Weapon Style bonuses could fail to trigger.
+
+
 v2.5.0
 ------
 Requires StickLuaFunctions v0.9.x-Alpha.

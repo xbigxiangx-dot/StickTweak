@@ -6,17 +6,17 @@
 
 StickTweak is a tweak collection for BG(2)EE. It includes weapon-style, spell, item, creature, and other gameplay tweaks.
 
-> **Compatibility notice:** Game version 2.7 is not supported.
+> **Compatibility:** Game versions 2.6 and 2.7 are supported.
 
 ### Requirements
 
 - EEex
 - StickLuaFunctions (the latest version is generally required)
 
-### Latest Release: v2.5.0
+### Latest Release: v2.6.0
 
-- [Full readme](StickTweak_v2.5.0/StickTweak/Readme_EN.txt)
-- [Download v2.5.0](https://github.com/xbigxiangx-dot/StickTweak/releases/tag/v2.5.0)
+- [Full readme](StickTweak_v2.6.0/StickTweak/Readme_EN.txt)
+- [Download v2.6.0](https://github.com/xbigxiangx-dot/StickTweak/releases/tag/v2.6.0)
 
 ### Installation
 
@@ -37,17 +37,17 @@ This project is licensed under the [MIT License](LICENSE).
 
 StickTweak 是一个面向 BG(2)EE 的调整合集，包含武器风格、法术、物品、生物及其他游戏内容调整。
 
-> **兼容性说明：** 本项目不支持游戏版本 2.7。
+> **兼容性：** 支持游戏版本 2.6 和 2.7。
 
 ### 要求
 
 - EEex
 - StickLuaFunctions（通常要求最新版本）
 
-### 最新版本：v2.5.0
+### 最新版本：v2.6.0
 
-- [完整说明](StickTweak_v2.5.0/StickTweak/说明.txt)
-- [下载 v2.5.0](https://github.com/xbigxiangx-dot/StickTweak/releases/tag/v2.5.0)
+- [完整说明](StickTweak_v2.6.0/StickTweak/说明.txt)
+- [下载 v2.6.0](https://github.com/xbigxiangx-dot/StickTweak/releases/tag/v2.6.0)
 
 ### 安装
 
