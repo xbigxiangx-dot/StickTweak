@@ -1,0 +1,36 @@
+LOAD_TRA ~%MOD_FOLDER%\TRA\%LANGUAGE%\WeaponStyleRebalance.tra~
+
+// 1
+// 更换武器风格加值2da表
+COPY_EXISTING ~STYLBONU.2da~ ~Override~
+// 修改文本
+STRING_SET 34174 @10001
+STRING_SET 34171 @10002
+STRING_SET 34176 @10004
+
+// LUA
+ACTION_IF !FILE_EXISTS_IN_GAME ~ST_Tweak.lua~ BEGIN	// 检测同mod其它组件是否已安装
+	COPY ~%MOD_FOLDER%\LUA\ST_Tweak.lua~ ~Override~
+	COPY_EXISTING ~M_Stick.lua~ ~Override~
+		APPEND_FILE ~%MOD_FOLDER%\LUA\ToAppend.lua~
+END
+COPY_EXISTING ~ST_Tweak.lua~ ~Override~
+	APPEND_FILE ~%MOD_FOLDER%\LUA\WeaponStyleRebalance.lua~
+	
+// 指定风格
+COPY ~%MOD_FOLDER%\SPL\STSTYLE.spl~ ~Override~
+	SAY NAME1 @11000
+	SAY UNIDENTIFIED_DESC @11001
+// 顺势斩
+COPY ~%MOD_FOLDER%\EFF\STPRECLV.eff~ ~Override~
+
+COPY ~%MOD_FOLDER%\PRO\STCLEAV.pro~ ~Override~
+ADD_PROJECTILE ~Override\STCLEAV.pro~
+COPY ~%MOD_FOLDER%\SPL\STCLEAV.spl~ ~Override~
+	READ_LONG  0x64 ExHead_off
+	READ_SHORT 0x68 ExHead_num
+		FOR (i=0;i<ExHead_num;++i) BEGIN
+			WRITE_SHORT 0x26+ExHead_off+40*i ~STCLEAV~
+		END
+COPY ~%MOD_FOLDER%\SPL\STCLEAVE.spl~ ~Override~
+	SAY NAME1 @11100
