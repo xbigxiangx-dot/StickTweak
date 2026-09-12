@@ -1,6 +1,14 @@
 StickTweak Changelog
 ====================
 
+v2.6.1
+------
+Requires StickLuaFunctions v0.11.x-Alpha.
+
+## Engineering and Compatibility:
+- Moved Lua display text to tra files so it follows the selected installation language.
+
+
 v2.6.0
 ------
 Requires StickLuaFunctions v0.11.x-Alpha.

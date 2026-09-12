@@ -3,7 +3,7 @@ StickTweak Readme
 
 ## Basic Information
 
-- Version: v2.6.0
+- Version: v2.6.1
 - Requirement: StickLuaFunctions v0.11.x-Alpha must be installed first. Other Alpha versions are not guaranteed to be compatible.
 
 ## Main Features
