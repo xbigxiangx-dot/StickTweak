@@ -4,18 +4,6 @@
 | 武器风格平衡 |
 +--------------+
 --]]
--- 语言
-local ST_Text = {
-	en_us = {
-		weaponStylePrefix = "Weapon style used with one-handed weapons: ",
-	},
-	zh_cn = {
-		weaponStylePrefix = "装备单手武器时使用风格：",
-	},
-}
-
-local ST_Language = uiTranslationFile or "en_us"
-local ST_CurrentText = ST_Text[ST_Language] or ST_Text.en_us
 
 -- 加载2da列表
 local strMod_2DA = EEex_Resource_Load2DA('STRMOD')
@@ -428,10 +416,10 @@ function STSTYLE(effect, targetSprite)
 		local fightingStyleString = Infinity_FetchString(stringIndexTable[fightingStyle])
 		return fightingStyleString
 	end
-	
+		
 	customFightingStyle = 3 - customFightingStyle
 	EEex_Sprite_SetLocalInt(targetSprite, "ST_FightingStyle", customFightingStyle)
-	Infinity_DisplayString(ST_CurrentText.weaponStylePrefix .. FetchFightingStyleString(customFightingStyle))
+	Infinity_DisplayString(Infinity_FetchString(ST_WEAPON_STYLE_PREFIX) .. FetchFightingStyleString(customFightingStyle))
 	
 	local spellList = targetSprite.m_memorizedSpellsInnate:getReference(0)
 	ST_SetMemorizedSpellNum(targetSprite, "STSTYLE", 1, 0)

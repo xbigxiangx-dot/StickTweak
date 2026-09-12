@@ -1,5 +1,13 @@
 StickTweak 更新日志
 ===================
+v2.6.1
+------
+需要 StickLuaFunctions v0.11.x-Alpha。
+
+##工程与兼容性：
+- 将 Lua 中的显示文本移至 tra 文件，随安装语言写入对应文本。
+
+
 v2.6.0
 ------
 需要 StickLuaFunctions v0.11.x-Alpha。

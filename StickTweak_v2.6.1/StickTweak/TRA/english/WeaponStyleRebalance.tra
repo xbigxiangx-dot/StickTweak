@@ -25,5 +25,6 @@ Master (3 slots): The wielder has no attack penalty with the main hand, and the 
 @11000 = ~Toggle Weapon Style~
 @11001 = ~Toggle Weapon Style
 When a character has only a one-handed weapon equipped in the main hand, this ability lets the character choose whether to use Single-Weapon Style or Two-Handed Weapon Style.~
+@11002 = ~Weapon style used with one-handed weapons: ~
 
 @11100 = ~Cleave~

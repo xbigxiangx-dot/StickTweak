@@ -1,5 +1,7 @@
 LOAD_TRA ~%MOD_FOLDER%\TRA\%LANGUAGE%\WeaponStyleRebalance.tra~
 
+OUTER_SET ST_WEAPON_STYLE_PREFIX = RESOLVE_STR_REF(@11002)
+
 // 1
 // 更换武器风格加值2da表
 COPY_EXISTING ~STYLBONU.2da~ ~Override~
@@ -16,6 +18,7 @@ ACTION_IF !FILE_EXISTS_IN_GAME ~ST_Tweak.lua~ BEGIN	// 检测同mod其它组件�
 END
 COPY_EXISTING ~ST_Tweak.lua~ ~Override~
 	APPEND_FILE ~%MOD_FOLDER%\LUA\WeaponStyleRebalance.lua~
+	REPLACE_TEXTUALLY ~ST_WEAPON_STYLE_PREFIX~ ~%ST_WEAPON_STYLE_PREFIX%~
 	
 // 指定风格
 COPY ~%MOD_FOLDER%\SPL\STSTYLE.spl~ ~Override~
